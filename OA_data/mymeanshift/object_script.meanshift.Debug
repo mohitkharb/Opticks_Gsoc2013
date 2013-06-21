@@ -1,0 +1,17 @@
+INPUT(
+./debug\rlist.o
+./debug\RAList.o
+./debug\msSysPrompt.o
+./debug\msImageProcessor.o
+./debug\ms.o
+./debug\BgImage.o
+./debug\BgGlobalFc.o
+./debug\BgEdgeList.o
+./debug\BgEdgeDetect.o
+./debug\BgEdge.o
+./debug\parser.o
+./debug\main.o
+./debug\libppm.o
+./debug\globalFnc.o
+./debug\edison.o
+);

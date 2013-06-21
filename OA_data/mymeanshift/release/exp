@@ -1,0 +1,32 @@
+/*
+rms mean shift based segmentation.
+*/
+
+//Specify mean shift parameters
+SpatialBandwidth = 7;
+RangeBandwidth = 4;
+MinimumRegionArea =10;
+Speedup = MEDIUM;
+
+//Display progress
+DisplayProgress ON;
+
+//Load an image to be segmented
+Load('images/ts2_1.ppm',IMAGE);
+
+//Segment the image
+Segment;
+
+//Save the result:
+
+//The segmented image...
+Save('seg_images/seg_ts2_1.ppm', PPM, SEGM_IMAGE);
+
+//The filtered image...
+//Save('filtimage.ppm', PPM, FILT_IMAGE);
+
+//The boundary image...
+Save('bndyimage1.ppm', PPM, SEGM_BOUNDARIES);
+
+//done.
+
