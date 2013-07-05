@@ -6,11 +6,11 @@ Object based Image Fusion and Change Detection tools for Opticks.
 
 Hi this is the Readme file for my Gsoc 2013 project "Object based Image Fusion and Change Detection tools for Opticks."
 
-It has a folder named OA.
-1. Copy OA  "<SDK-directory>\application\PlugIns\src\"
-2. COpy OBIA_plugin.sln to "<SDK-directory>\application\"
+It has a folder named CD.
+1. Copy CD  "<SDK-directory>\application\PlugIns\src\"
+2. COpy CDF_plugin.sln to "<SDK-directory>\application\"
 3. set an enviornment variable "OPTICKSDEPENDENCIES" to the dependencies folder in the sdk, and set OPTICKS_CODE_DIR to point it to the opticks sdk.
-4. run OBIA_plugin in visual studio and build as per your choice.
+4. run CDF_plugin in visual studio and build as per your choice.
 
 
 For running the plugin in opticks :
