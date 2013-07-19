@@ -42,7 +42,7 @@
 #include <QDebug>
 #include<QList>
 
-REGISTER_PLUGIN_BASIC(OpticksOBIAPlugin, changeDetection);
+REGISTER_PLUGIN_BASIC(OpticksCDFPlugin, changeDetection);
 
 changeDetection::changeDetection() 
 	:w(NULL)
@@ -56,7 +56,7 @@ changeDetection::changeDetection()
    setProductionStatus(false);
    setDescription("Verifies Requirement 324.");
    setShortDescription("Verifies Requirement 324.");
-   setMenuLocation("[OBIA]\\Compare Images");
+   setMenuLocation("[CDF]\\Compare Images");
 	setDescriptorId("{DF7B5AEF-B156-40ae-8DF6-6B3D5BC964E2}");
    setWizardSupported(false);
    

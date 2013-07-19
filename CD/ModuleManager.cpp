@@ -10,4 +10,4 @@
 
 #include "PlugInRegistration.h"
 
-REGISTER_MODULE(OpticksOBIAPlugin);
+REGISTER_MODULE(OpticksCDFPlugin);
