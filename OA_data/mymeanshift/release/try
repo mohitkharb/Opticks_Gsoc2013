@@ -12,7 +12,7 @@ Speedup = MEDIUM;
 DisplayProgress ON;
 
 //Load an image to be segmented
-Load('D:\acad\Gsoc\GSOC-Repo\Opticks_GSOC2012\OA_data\Temp\OpticksImage.ppm',IMAGE);
+Load('D:/Dropbox/64bit_source_codes_5042012/Change_Detection/images/After.ppm',IMAGE);
 
 //Segment the image
 Segment;
@@ -20,7 +20,7 @@ Segment;
 //Save the result:
 
 //The segmented image...
-Save('C:\Windows\Temp\seg_OpticksImage.ppm', PPM, SEGM_IMAGE);
+Save('C:\Windows\Temp\seg_After.ppm', PPM, SEGM_IMAGE);
 
 //The filtered image...
 //Save('filtimage.ppm', PPM, FILT_IMAGE);
