@@ -83,6 +83,11 @@ struct feature
 	float contrast;
 	float direction;
     float roughness;
+
+	int *meanMSS,*meanFused;
+    float *stdMSS, *stdFused;
+
+	int classNumber;
 };
 
 class Object;
@@ -122,6 +127,7 @@ class Image
 
 	//functions
 //	int ** getMask();
+	void createFusedObjects(int NO,vector< vector< int > > objectInfo, int flag, unsigned char ***dataMSS, unsigned char ***dataFused);
     void createObjects(int NO,vector< vector< int > > objectInfo, int flag); //called for segmented image
 	int getNOB();	//get the no. of bands
     unsigned char *getPixelData(int x, int y);
@@ -196,9 +202,9 @@ void fillRegionStitchChunks(int **olinfo, int **nlinfo, int nl, int sx, int sy, 
 vector< vector< int > > prepareObjectInfo(int rows, int cols, int **label_1, int **label_2, int **&dmerge, int &NO);	//merges two images and calculates the MBBs of the objects as well as the merge-map
 void fillRegionObjectInfo(int **dt1,int **dt2,int **&dmerge,int val1,int val2,int label,int bi,int bj,vector< int > &meta_obj,int rows, int cols);
 
-//vector< vector< float > > changed(int rows, int cols, int **dt1, int**dt2, vector< vector< int> > info1, vector< vector < int> > info2, int NO1, int NO2);
+
 vector< vector< float > > changed(int rows, int cols, int **dt1, int**dt2, int info1[], int info2[], int NO1, int NO2);
 void fillRegionChanged(int rows, int cols, int info1[],int info2[],  int **dt1, int **dt2, int **&dmerge,int val1,int val2,int label,int bi,int bj,vector<float > &meta_obj);
-//void fillRegionChanged(int rows, int cols, vector< vector< int > > info1,vector< vector< int > > info2,  int **dt1, int **dt2, int **&dmerge,int val1,int val2,int label,int bi,int bj,vector<float > &meta_obj);
+
 
 int *changeReporting(int rows, int cols, float low, float high, vector< vector< float > > pinfo, int **mergemap);

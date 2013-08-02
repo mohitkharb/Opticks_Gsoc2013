@@ -1019,6 +1019,67 @@ void Image::callCalculateMean(vector< vector< int > >objectInfo, int start, int 
 
 }
 
+void Image::createFusedObjects(int NO, vector< vector< int > > objectInfo, int flag,  unsigned char ***dataMSS, unsigned char ***dataFused)
+{
+    //	this->NO = *max_element(*segmentedImageInfo,(*segmentedImageInfo)+(this->ROWS * this->COLS));
+    this->NO = NO;
+    this->objectArray = (Object *)malloc(sizeof(Object)*this->NO);
+    //FILE *objectinfo;
+    //objectinfo = fopen("objectinfo_dump_2.txt","w");
+    //    std::cout<<"createobjects inside"<<std::endl;
+    if(flag == 1)
+    {
+        //        std::cout<<"if"<<std::endl;
+        int numObjectsPerThread = 25;
+        int numThreads = this->NO / numObjectsPerThread + 1;
+        QFuture<void> *result = new QFuture<void> [numThreads];
+        int i=0, j=numObjectsPerThread - 1;
+        if(j>this->NO)
+            j = this->NO - 1;
+        int threadId = 0;
+        while(i < this->NO)
+        {
+            // result[threadId++] = QtConcurrent::run(std::bind1st(std::mem_fun(&Image::callCreateAttribute), this)( objectInfo,i,j);
+            // result[threadId++] = QtConcurrent::run(this,Image::callCreateAttribute(objectInfo,i,j));
+            result[threadId++] = QtConcurrent::run(this,&Image::callCreateAttribute,objectInfo,i,j,dataMSS,dataFused);
+            i=j+1;
+            j=i + numObjectsPerThread - 1;
+            if(j>=this->NO)
+                j=this->NO-1;
+        }
+        for( i = 0; i<numThreads; i++)
+            result[i].waitForFinished();
+        //free(result);
+    }
+    else
+    {
+        //        std::cout<<"else"<<std::endl;
+        int numObjectsPerThread = 25;
+        int numThreads = this->NO / numObjectsPerThread + 1;
+        QFuture<void> *result = new QFuture<void> [numThreads];
+        int i=0, j = numObjectsPerThread - 1;
+        if(j>this->NO)
+            j = this->NO - 1;
+        int threadId = 0;
+        while(i < this->NO)
+        {
+            //            result[threadId++] = QtConcurrent::run(check,i,j);
+            result[threadId++] = QtConcurrent::run(this,&Image::callCalculateMean,objectInfo,i,j);
+            //result[threadId++] = QtConcurrent::run(std::bind1st(std::mem_fun(&Image::callCalculateMean), this)( objectInfo,i,j);
+            i=j+1;
+            j=i + numObjectsPerThread - 1;
+            if(j>=this->NO)
+                j=this->NO-1;
+        }
+        for( i = 0; i<numThreads; i++)
+            result[i].waitForFinished();
+        // free(result);
+    }
+
+
+    return;
+}
+
 
 void Image::createObjects(int NO, vector< vector< int > > objectInfo, int flag)
 {

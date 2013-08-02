@@ -5,6 +5,13 @@
 #include <QDialog>
 #include <vector>
 #include<queue>
+#include"codes.h"
+#include "classifyattributes.h"
+#include"nclasses.h"
+
+
+class paint_box;
+class ClassifyAttributes;
 
 namespace Ui {
 	class MainWindow_fusion;
@@ -21,11 +28,17 @@ public:
     QString fileName;
     QString fileName1;
     int imgsize[2];//imgsize[0] = rows(529) [1]=cols(940)
-    int ***data1;//data1 :img1.ppm, data2 : img2.ppm
-    int ***data2;//data1 :img1.ppm, data2 : img2.ppm
-    int ***dataf; // fusion image
-    int ***datasf;
-    int ***readPPMImage(int imgsize[],char *filename, int band);
+    unsigned char ***data1;//data1 :img1.ppm, data2 : img2.ppm
+    unsigned char ***data2;//data1 :img1.ppm, data2 : img2.ppm
+    unsigned char ***dataf; // fusion image
+    unsigned char ***datasf;
+    int glsiclicked;
+    bool postprocessing;
+    int numberOfClasses;
+
+	 paint_box *fusedimg;
+    paint_box *classifiedimg;
+    ClassifyAttributes *cAtt;
 
 
     QString ms_dir;
@@ -36,20 +49,44 @@ QString data_dir;
      QString segName;
      QString img_name;
       int **merge_map;
-      std::vector< std::vector< int > >object_info1;
-     int **labels1;//nseg_ts2_1
-      int NO1;
-     std::vector< std::vector< int > > prepareObjectInfo(int rows, int cols, int **labels_1, int **labels_2, int **&dmerge, int &NO);
-     void fillRegionObjectInfo(int **dt1,int **dt2,int **&dmerge,int val1,int val2,int label,int bi,int bj,std::vector< int > &meta_obj, int rows, int cols);
-     void fillRegionNewLabels(int **olinfo,int **nlinfo,int ol,int nl,int sx,int sy,int **mymap, int ROWS, int COLS);
-     int **prepareNewLabels(char *seg_result_label_file,int rows, int cols);
-     void Fusion_GLSI(int **segmap, int ***&fimage, int ***msimage, int ***panimage, int onum, int xmin, int xmax, int ymin, int ymax,int bandnum);
-     void writePPMImage(int ***op,int img1_size[],std::string fname);
-     void PrepareStatistics(int **segmap, int ***msimage, int ***panimage,int onum,int xmin,int xmax,int ymin,int ymax,int bandnum,float &msmean,float &msstd,float &panmean,float &panstd,int &panmin,int &panmax, int &msmin, int &msmax);
-     //void PrepareStatistics(int **&segmap, int ***&msimage, int ***&panimage,int &onum,int &xmin,int &xmax,int &ymin,int &ymax,int &bandnum,float &msmean,float &msstd,float &panmean,float &panstd,int &panmin,int &panmax);
-     void GetHistogram (std::vector<int> data, std::vector<int> &val, std::vector<int> &cnt);
-     void GetStats(int **segmap, std::vector<int> data,int onum,float &mean,float &std1, int &min, int &max,int xmin, int xmax, int ymin, int ymax, int nop);
-     void FillBlackPixels(int ***&fimage,int rows,int cols,int **&segmap,int b);
+      char ***blackPixelFlag;
+    std::vector< std::vector< int > >object_info1;
+    std::vector< std::vector< int > >object_info_fusion;
+    int **labels1;
+    int **labelsFusion;
+    int NO1;
+
+
+	struct Point{
+        int x;
+        int y;
+        int clusterId;
+    };
+    struct Cluster{
+        double r,g,b;
+    };
+
+    int NOF;
+    std::map<int,std::vector<int> >class_m_1;
+    Image i1;
+    Image iFused;
+    void insertvalue(int n,int x, int y, int **labels, int img);
+    void classification();
+    float CalcDeterminant( float **mat, int order);
+    void GetMinor(float **src, float **&dest, int row, int col, int order);
+    void MatrixInversion(float **A, int order, float **&Y);
+    float **getCovarianceMartix(int numberOfSamples, float **dataArray, float **meanVector, int classNumber, int ndims);
+    float calculateMahaDist(float *sample, float **class_mean, float **full_cov_mat, int class_number, int ndims);
+
+
+	 void Fusion_Brovey(int **segmap, unsigned char ***&fimage, unsigned char ***msimage, unsigned char ***panimage, int onum, int xmin, int xmax, int ymin, int ymax,int bandnum);
+    void Fusion_GLSI(int **segmap, unsigned char ***&fimage, unsigned char ***msimage, unsigned char ***panimage, int onum, int xmin, int xmax, int ymin, int ymax,int bandnum);
+    void writePPMImage(unsigned char ***op,int img1_size[],std::string fname);
+    void PrepareStatistics(int **segmap, unsigned char ***msimage, unsigned char ***panimage,int onum,int xmin,int xmax,int ymin,int ymax,int bandnum,float &msmean,float &msstd,float &panmean,float &panstd,int &panmin,int &panmax, int &msmin, int &msmax);
+    void GetHistogram (std::vector<unsigned char> data, std::vector<unsigned char> &val, std::vector<int> &cnt);
+    void GetStats(int **segmap, std::vector<unsigned char> data,int onum,float &mean,float &std1, int &min, int &max,int xmin, int xmax, int ymin, int ymax, int nop);
+    void FillBlackPixels(unsigned char ***&fimage,int rows,int cols,int **&segmap,int b);
+    void Smoothing_GLSI(unsigned char ***&fimage,int **segmap,int b,unsigned char ***&sfimage,int rows,int cols);
      
 
 private slots:
@@ -62,6 +99,20 @@ private slots:
      void on_pushButton_ms_clicked();
 
      void on_pushButton_clicked();
+	 void on_radioButton_clicked();
+	 void on_radioButton_2_clicked();
+	 void on_checkBox_clicked();
+	 void on_pushButton_3_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_radioButton_clicked(bool checked);
+
+    void on_pushButton_6_clicked();
 
 
 private:

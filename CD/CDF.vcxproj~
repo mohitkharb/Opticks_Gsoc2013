@@ -209,6 +209,11 @@
     <ClCompile Include="ModuleManager.cpp" />
     <ClCompile Include="classbased.cpp" />
     <ClCompile Include="selectcdtype.cpp" />
+    <ClCompile Include="paint_box.cpp" />
+    <ClCompile Include="scarea.cpp" />
+    <ClCompile Include="classifyattributes.cpp" />
+    <ClCompile Include="choosesample.cpp" />
+    <ClCompile Include="nclasses.cpp" />
     <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_selectcdtype.cpp" />
     <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_mainwindow_cd.cpp" />
     <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_mainwindow_fusion.cpp" />
@@ -218,8 +223,124 @@
     <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_attributebased_cd.cpp" />
     <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_pain2img.cpp" />
     <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_changeDetection.cpp" />
+    <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_Fusion.cpp" />
+    <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_paint_box.cpp" />
+    <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_scarea.cpp" />
+    <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_classifyattributes.cpp" />
+    <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_choosesample.cpp" />
+    <ClCompile Include="$(BuildDir)\Moc\$(ProjectName)\moc_nclasses.cpp" />
   </ItemGroup>
   <ItemGroup>
+	  <CustomBuild Include="paint_box.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+	  <CustomBuild Include="scarea.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+	  <CustomBuild Include="classifyattributes.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+	  <CustomBuild Include="choosesample.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+	<CustomBuild Include="ncalsses.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing %(Filename).h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\moc.exe" "%(FullPath)" -o "$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Moc\$(ProjectName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
 
     <CustomBuild Include="classbased.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing %(Filename).h...</Message>
@@ -449,8 +570,81 @@
     <ClInclude Include="$(BuildDir)\Uic\$(ProjectName)\ui_classbased.h" />
     <ClInclude Include="$(BuildDir)\Uic\$(ProjectName)\ui_selectcdtype.h" />
     <ClInclude Include="$(BuildDir)\Uic\$(ProjectName)\ui_attributebased_cd.h" />
+    <ClInclude Include="$(BuildDir)\Uic\$(ProjectName)\ui_choosesample.h" />
+    <ClInclude Include="$(BuildDir)\Uic\$(ProjectName)\ui_classifyattributes.h" />
+    <ClInclude Include="$(BuildDir)\Uic\$(ProjectName)\ui_nclasses.h" />
   </ItemGroup>
   <ItemGroup>
+
+	  <CustomBuild Include="choosesample.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    
+	  <CustomBuild Include="classifyattributes.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    
+	  <CustomBuild Include="nclasses.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Filename).ui ...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+        "$(QTBIN)\uic.exe" "%(FullPath)" -o "$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h"
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(BuildDir)\Uic\$(ProjectName)\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    
     <CustomBuild Include="mainwindow_fusion.ui">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Filename).ui ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
