@@ -9,12 +9,12 @@
 #include <QMainWindow>
 #include "mainwindow_fusion.h"
 
-class MainWindow;
+class MainWindow_fusion;
 class paint_box : public QWidget
 {
     Q_OBJECT
 public:
-    explicit paint_box(std::string fname,int row,int col,int cls,int **labels1,int img, QDialog *tempParent,QWidget *parent = 0);
+    explicit paint_box(std::string fname,int row,int col,int cls,int **labels1,int img, MainWindow_fusion *tempParent,QWidget *parent = 0);
     explicit paint_box(std::string fname,std::string title, int row,int col,QWidget *parent=0);
     QImage  *qimg;
     void fillsample(int n);
@@ -25,7 +25,7 @@ public:
     int X,Y,ncls,class_index;
     chooseSample *choosesample ;
 
-    QDialog *tempParent ;
+    MainWindow_fusion *tempParent ;
 
 //    bool fusedImageShow;
 

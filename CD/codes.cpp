@@ -1041,7 +1041,7 @@ void Image::createFusedObjects(int NO, vector< vector< int > > objectInfo, int f
         {
             // result[threadId++] = QtConcurrent::run(std::bind1st(std::mem_fun(&Image::callCreateAttribute), this)( objectInfo,i,j);
             // result[threadId++] = QtConcurrent::run(this,Image::callCreateAttribute(objectInfo,i,j));
-            result[threadId++] = QtConcurrent::run(this,&Image::callCreateAttribute,objectInfo,i,j,dataMSS,dataFused);
+            result[threadId++] = QtConcurrent::run(this,&Image::callCreateAttribute,objectInfo,i,j);//,dataMSS,dataFused);
             i=j+1;
             j=i + numObjectsPerThread - 1;
             if(j>=this->NO)

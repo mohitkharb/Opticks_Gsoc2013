@@ -5,7 +5,7 @@
 #include"nclasses.h"
 
 class nclasses;
-class MainWindow;
+class MainWindow_fusion;
 
 namespace Ui {
 class ClassifyAttributes;
@@ -16,7 +16,7 @@ class ClassifyAttributes : public QWidget
     Q_OBJECT
     
 public:
-    explicit ClassifyAttributes( int row,int col,int **labels1, QDialog *tempParent,QWidget *parent = 0);
+    explicit ClassifyAttributes( int row,int col,int **labels1, MainWindow_fusion *tempParent,QWidget *parent = 0);
     ~ClassifyAttributes();
     int classify[20];
     nclasses *ncls;
@@ -24,7 +24,7 @@ public:
     int Row;
     int Col;
     int **labels1_;
-    QDialog *Parent;
+    MainWindow_fusion *Parent;
     
 private slots:
     void on_checkBox_clicked();

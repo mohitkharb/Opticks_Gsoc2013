@@ -106,11 +106,7 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void on_pushButton_5_clicked();
-
     void on_pushButton_4_clicked();
-
-    void on_radioButton_clicked(bool checked);
 
     void on_pushButton_6_clicked();
 

@@ -335,7 +335,7 @@ void MainWindow_fusion::GetStats(int **segmap, std::vector<unsigned char> data,i
 
     int it=0;
     int cit;
-    int wit;
+    int wit=0;
 
     if (size == 1)
     {
@@ -609,6 +609,7 @@ void MainWindow_fusion::Smoothing_GLSI(unsigned char ***&fimage,int **segmap,int
 
     int i,j,k,l;
     int start,flag_do,brovey,glsi,sum,cnt,curclass;
+	curclass=0;
 
     for (i=0;i<rows;i++)
     {
@@ -810,7 +811,7 @@ void MainWindow_fusion::on_pushButton_clicked()
             while(1)
             {
                 movement = 0;
-                for(int i=0; i<pointCollection.size(); i++)
+                for(int i=0; i < (int)pointCollection.size(); i++)
                 {
                     int pred = data1[(pointCollection[i]).x][(pointCollection[i]).y][0];
                     int pgreen = data1[(pointCollection[i]).x][(pointCollection[i]).y][1];
@@ -845,7 +846,7 @@ void MainWindow_fusion::on_pushButton_clicked()
                     for(int j=0; j<5; j++)
                     {
                         double sumr=0,sumg=0,sumb=0,noPoints=0;
-                        for(int i=0; i<pointCollection.size(); i++)
+                        for(int i=0; i< (int)pointCollection.size(); i++)
                         {
                             if(pointCollection[i].clusterId == j)
                             {
@@ -866,7 +867,7 @@ void MainWindow_fusion::on_pushButton_clicked()
 
             FILE *cluster_info;
             cluster_info = fopen("C:/Windows/Temp/cluster_info.txt","w");
-            for(int i=0; i<pointCollection.size(); i++)
+            for(int i=0; i< (int)pointCollection.size(); i++)
             {
                 fprintf(cluster_info,"%d %d %d\n",pointCollection[i].x,pointCollection[i].y,pointCollection[i].clusterId);
             }
@@ -881,7 +882,7 @@ void MainWindow_fusion::on_pushButton_clicked()
                 for(int j=0; j<imgsize[1]; j++)
                     clusteredLabels[i][j] = -1;
 
-            for(int i=0; i<pointCollection.size(); i++)
+            for(int i=0; i< (int)pointCollection.size(); i++)
             {
                 int x = pointCollection[i].x;
                 int y = pointCollection[i].y;
@@ -894,7 +895,7 @@ void MainWindow_fusion::on_pushButton_clicked()
                 int xmax = -1;
                 int ymin = imgsize[1] +1;
                 int ymax = -1;
-                for(int j=0; j<pointCollection.size(); j++)
+                for(int j=0; j< (int)pointCollection.size(); j++)
                 {
                     if(pointCollection[j].clusterId == i)
                     {
@@ -1204,14 +1205,14 @@ void MainWindow_fusion::classification(){
         if(cAtt->classify[i] == 1)
             ndims++;
     }
-    float area,roundness,perimeter,compactness,std_r,std_g,std_b,std_rf,std_gf,std_bf,mean_r,mean_g,mean_b,mean_rf,mean_gf,mean_bf;
+    float std_r,std_g,std_b,std_rf,std_gf,std_bf,mean_r,mean_g,mean_b,mean_rf,mean_gf,mean_bf;
 
     int current_class=0, i = 0, k;// ndims = 7; //ndims is the number of dimensions of the data samples
     int class_num = int (class_m_1.size());
     numberOfClasses = class_num;
 
 
-    float value_r, value_g, value_b, texture_coarseness, texture_direction, texture_contrast, texture_roughness;
+
     float **class_mean;
 
     class_mean = (float **)malloc(sizeof(float *)*class_num);
@@ -1240,14 +1241,14 @@ void MainWindow_fusion::classification(){
 
         //create data matrix here
         float **data_samples = (float **)malloc(sizeof(float *)*(tempvect.size()));
-        for(int p=0; p<tempvect.size(); p++)
+        for(int p=0; p< (int)tempvect.size(); p++)
             data_samples[p] = (float *)malloc(sizeof(float)*ndims);
 
         for(int m=0; m<ndims; m++)
             for(int n=0; n<ndims; n++ )
                 inverted_class_cov_mat[m][n] = 0.0;
         std::cout << "selected class: " << current_class << std::endl;
-        while(i < tempvect.size() )
+        while(i < (int)tempvect.size() )
         {
             k = tempvect[i];
             int j=0;

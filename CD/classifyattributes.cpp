@@ -1,7 +1,7 @@
 #include "classifyattributes.h"
 #include "ui_classifyattributes.h"
 
-ClassifyAttributes::ClassifyAttributes(int row,int col,int **labels1, QDialog *tempParent,QWidget *parent) :
+ClassifyAttributes::ClassifyAttributes(int row,int col,int **labels1, MainWindow_fusion *tempParent,QWidget *parent) :
     Row(row),Col(col),labels1_(labels1),Parent(tempParent),
     QWidget(parent),
     ui(new Ui::ClassifyAttributes)
