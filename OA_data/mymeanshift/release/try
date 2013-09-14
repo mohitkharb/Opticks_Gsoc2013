@@ -1,0 +1,31 @@
+/*
+rms mean shift based segmentation.
+*/
+
+//Specify mean shift parameters
+SpatialBandwidth = 7;
+RangeBandwidth = 4;
+MinimumRegionArea =10;
+Speedup = MEDIUM;
+
+//Display progress
+DisplayProgress ON;
+
+//Load an image to be segmented
+Load('D:/Dropbox/64bit_source_codes_5042012/Fusion_Windows/PanImage.ppm',IMAGE);
+
+//Segment the image
+Segment;
+
+//Save the result:
+
+//The segmented image...
+Save('C:\Windows\Temp\seg_PanImage.ppm', PPM, SEGM_IMAGE);
+
+//The filtered image...
+//Save('filtimage.ppm', PPM, FILT_IMAGE);
+
+//The boundary image...
+Save('bndyimage1.ppm', PPM, SEGM_BOUNDARIES);
+
+//done.
